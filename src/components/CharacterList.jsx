@@ -22,14 +22,14 @@ const CharacterList = () => {
                 console.error('Error fetching characters:', error);
             }
         };
-
+            
         fetchCharacters();
     }, []);
-
+            
     if (selectedCharacter) {
         return <CharacterDetail characterId={selectedCharacter} setSelectedCharacter={setSelectedCharacter} />;
     }
-
+            
     return (
         <div className="character-list">
             {characters.map((character) => (
@@ -41,5 +41,6 @@ const CharacterList = () => {
         </div>
     );
 };
-
+            
 export default CharacterList;
+            

@@ -11,10 +11,25 @@
     padding: 10px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .character-card img {
     max-width: 100%;
     height: auto;
     border-radius: 4px;
+}
+
+.character-detail {
+    padding: 20px;
+}
+
+.character-detail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.character-detail button {
+    margin-bottom: 20px;
 }

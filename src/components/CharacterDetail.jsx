@@ -1,0 +1,49 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import md5 from 'crypto-js/md5';
+
+const CharacterDetail = ({ characterId, setSelectedCharacter }) => {
+    const [character, setCharacter] = useState(null);
+
+    useEffect(() => {
+        const fetchCharacterDetails = async () => {
+            const ts = 1; // Timestamp
+            const publicKey = '41b840dae9a9fb35db11140418553aac';
+            const privateKey = 'c36afbddff0194db0350efdd584e19ee7778b5b8';
+            const hash = md5(ts + privateKey + publicKey).toString();
+            const url = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+
+            try {
+                const response = await axios.get(url);
+                setCharacter(response.data.data.results[0]);
+            } catch (error) {
+                console.error('Error fetching character details:', error);
+            }
+        };
+
+        if (characterId) {
+            fetchCharacterDetails();
+        }
+    }, [characterId]);
+
+    if (!character) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div className="character-detail">
+            <button onClick={() => setSelectedCharacter(null)}>Back to List</button>
+            <h2>{character.name}</h2>
+            <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
+            <p>{character.description}</p>
+            <h3>Comics</h3>
+            <ul>
+                {character.comics.items.map((comic) => (
+                    <li key={comic.resourceURI}>{comic.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+export default CharacterDetail;

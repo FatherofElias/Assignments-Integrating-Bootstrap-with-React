@@ -3,6 +3,7 @@ import Header from './components/Header';
 import CharacterList from './components/CharacterList';
 import './components/CharacterList.css';
 
+
 const App = () => {
     return (
         <div>

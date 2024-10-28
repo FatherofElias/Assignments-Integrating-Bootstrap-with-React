@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'crypto-js/md5';
 
+
 const CharacterDetail = ({ characterId, setSelectedCharacter }) => {
   const [character, setCharacter] = useState(null);
 

@@ -5,6 +5,7 @@ import CharacterList from './components/CharacterList';
 import CharacterDetail from './components/CharacterDetail';
 import Home from './components/Home'
 import Comics from './components/Comics';
+import NotFound from './components/NotFound';
 import './components/CharacterList.css';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path="/character" element={<CharacterList />} />
                 <Route path="/character/:id" element={<CharacterDetail />} />
                 <Route path="/comics" element={<Comics />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
     );

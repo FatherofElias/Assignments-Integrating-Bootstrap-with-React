@@ -35,7 +35,7 @@ const CharacterDetail = () => {
 
     return (
         <div className="character-detail">
-            <button onClick={() => navigate('/')}>Back to List</button>
+            <button onClick={() => navigate('/character')}>Back to List</button>
             <h2>{character.name}</h2>
             <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
             <p>{character.description || "No description available."}</p>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'crypto-js/md5';
-import CharacterDetail from './CharacterDetail';
+import { useNavigate } from 'react-router-dom';
 
 const CharacterList = () => {
     const [characters, setCharacters] = useState([]);
-    const [selectedCharacter, setSelectedCharacter] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCharacters = async () => {
@@ -22,18 +22,14 @@ const CharacterList = () => {
                 console.error('Error fetching characters:', error);
             }
         };
-            
+
         fetchCharacters();
     }, []);
-            
-    if (selectedCharacter) {
-        return <CharacterDetail characterId={selectedCharacter} setSelectedCharacter={setSelectedCharacter} />;
-    }
-            
+
     return (
         <div className="character-list">
             {characters.map((character) => (
-                <div key={character.id} className="character-card" onClick={() => setSelectedCharacter(character.id)}>
+                <div key={character.id} className="character-card" onClick={() => navigate(`/character/${character.id}`)}>
                     <h3>{character.name}</h3>
                     <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={character.name} />
                 </div>
@@ -41,6 +37,5 @@ const CharacterList = () => {
         </div>
     );
 };
-            
+
 export default CharacterList;
-            

@@ -12,6 +12,8 @@
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
 .character-card img {
@@ -30,6 +32,9 @@
     border-radius: 4px;
 }
 
-.character-detail button {
+.character-detail a {
+    display: inline-block;
     margin-bottom: 20px;
+    text-decoration: none;
+    color: #007bff;
 }

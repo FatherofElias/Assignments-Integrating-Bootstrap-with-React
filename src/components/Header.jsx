@@ -4,7 +4,7 @@ import './NavLinks.css';
 
 const Header = () => {
     return (
-        <header>
+        <header className="bg-primary text-white p-3">
             <h1>Marvel Comics Explorer</h1>
             <nav>
                 <ul>
